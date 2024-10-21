@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page HTML Avancée</title>
+    <style>
+        /* Style global */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        /* Style du formulaire */
+        .form-container {
+            max-width: 500px;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container input, .form-container textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .form-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form-container button:hover {
+            background-color: #555;
+        }
+
+        /* Carrousel */
+        .carousel {
+            width: 80%;
+            margin: 50px auto;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .carousel img {
+            width: 100%;
+            transition: transform 0.5s ease;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .fade {
+            animation: fadeIn 1s;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- En-tête de la page -->
+    <header>
+        <h1>Bienvenue sur ma Page Avancée</h1>
+    </header>
+
+    <!-- Formulaire avec validation en JavaScript -->
+    <div class="form-container">
+        <h2>Formulaire de Contact</h2>
+        <form id="contactForm">
+            <input type="text" id="name" placeholder="Nom" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <textarea id="message" placeholder="Message" required></textarea>
+            <button type="submit">Envoyer</button>
+        </form>
+    </div>
+
+    <!-- Carrousel d'images -->
+    <div class="carousel">
+        <img class="fade" src="https://via.placeholder.com/800x400/333/fff?text=Image+1" alt="Image 1">
+        <img class="fade" src="https://via.placeholder.com/800x400/666/fff?text=Image+2" alt="Image 2">
+        <img class="fade" src="https://via.placeholder.com/800x400/999/fff?text=Image+3" alt="Image 3">
+    </div>
+
+    <!-- Script JavaScript -->
+    <script>
+        // Validation du formulaire en JavaScript
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            if (name && email && message) {
+                alert('Merci ' + name + ', votre message a été envoyé avec succès.');
+            } else {
+                alert('Veuillez remplir tous les champs.');
+            }
+        });
+
+        // Carrousel d'images
+        let currentImageIndex = 0;
+        const images = document.querySelectorAll('.carousel img');
+        setInterval(() => {
+            images[currentImageIndex].style.transform = 'translateX(-100%)';
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            images[currentImageIndex].style.transform = 'translateX(0)';
+        }, 3000);
+    </script>
+
+</body>
+</html>
